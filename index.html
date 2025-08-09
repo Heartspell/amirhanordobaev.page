@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
-  <title>Переводчик валюты</title>
+  <title>ARMYFORMS - Переводчик валюты</title>
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
@@ -363,7 +363,7 @@
     const increaseBtn = document.getElementById('increaseMarkup');
     const decreaseBtn = document.getElementById('decreaseMarkup');
 
-    const DEFAULT_RATE = 0.193;
+    const DEFAULT_RATE = 0.165;
 
     function showManualMarkup(show) {
       if(show) {
@@ -404,28 +404,41 @@
     }
 
     // Округление с условием:
-    // - Если сумма меньше 1000: округляем до ближайшего четного числа, 
+    // - Если сумма меньше 1000: округляем вверх до ближайшего чётного числа,
     //   причем если получилось 100 — заменяем на 200
-    // - Если сумма >= 1000: округляем до ближайших сотен (с сохранением четности),
+    // - Если сумма >= 1000: округляем вверх до ближайших сотен,
+    //   если нечётное — прибавляем 100 (чтобы стало чётным)
     //   но тысячи не трогаем
     function roundUpRules(amount) {
-      if (amount < 1000) {
-        let rounded = Math.ceil(amount);
-        // Сделать четным:
-        if (rounded % 2 !== 0) rounded += 1;
-        // Спецслучай для 100:
-        if (rounded === 100) rounded = 200;
-        return rounded;
-      } else {
-        // Округление к ближайшим сотням:
-        let rounded = Math.ceil(amount / 100) * 100;
-        // Если это 100, заменить на 200
-        if (rounded === 100) rounded = 200;
-        // Если сумма 1000 и выше — проверить четность сотен (например 1100, 1200...)
-        // Мы оставляем как есть, т.к. это тысячи и их не трогаем
-        return rounded;
-      }
+  if (amount < 1000) {
+    let rounded = Math.ceil(amount);
+    if (rounded % 2 !== 0) {
+      rounded += 1;
     }
+    if (rounded === 100) rounded = 200;
+    return rounded;
+  } else {
+    // Округляем вверх до сотен:
+    let hundredsPart = Math.floor(amount / 100);
+    let remainder = amount % 100;
+
+    if (remainder > 0) {
+      hundredsPart += 1;
+    }
+
+    let rounded = hundredsPart * 100;
+
+    // Проверяем четность сотен
+    if ((rounded / 100) % 2 !== 0) {
+      rounded += 100;
+    }
+
+    if (rounded === 100) rounded = 200;
+
+    return rounded;
+  }
+}
+
 
     function showResult(text) {
       resultDiv.textContent = text;
