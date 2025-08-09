@@ -17,6 +17,7 @@
       font-family: 'Inter', sans-serif;
       color: #f5f5f5;
       min-height: 100vh;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -28,9 +29,12 @@
       border: 2px solid #b91c1c;
       border-radius: 24px;
       width: 100%;
-      max-width: 440px;
+      max-width: 720px;
       padding: 2.5rem 3rem;
       box-shadow: 0 8px 24px rgba(185, 28, 28, 0.5);
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
       animation: fadeInUp 0.6s ease forwards;
       opacity: 0;
       transform: translateY(20px);
@@ -41,6 +45,13 @@
         opacity: 1;
         transform: translateY(0);
       }
+    }
+
+    .form-section {
+      flex: 1 1 60%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
     }
 
     h1 {
@@ -60,13 +71,18 @@
     label {
       font-weight: 600;
       font-size: 1.1rem;
-      margin-bottom: 0.5rem;
-      display: block;
+      margin-bottom: 0.3rem;
       color: #e5e5e5;
+      user-select: none;
       letter-spacing: 0.03em;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
+    }
+
+    .field-description {
+      font-size: 0.85rem;
+      color: #a3a3a3;
+      margin-bottom: 0.75rem;
+      font-style: italic;
+      user-select: none;
     }
 
     input[type="number"] {
@@ -80,9 +96,6 @@
       font-weight: 500;
       transition: border-color 0.3s ease, background-color 0.3s ease;
       outline-offset: 2px;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
     }
 
     input[type="number"]:focus {
@@ -102,97 +115,41 @@
       margin-top: 0.25rem;
       font-weight: 600;
       user-select: none;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    .error-text.visible {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .btn-red {
-      background-color: #b91c1c;
-      color: white;
-      font-weight: 700;
-      border-radius: 12px;
-      padding: 0.85rem 1.25rem;
-      text-align: center;
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
-      box-shadow: 0 4px 10px rgba(185, 28, 28, 0.7);
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
-    }
-
-    .btn-red:hover,
-    .btn-red:focus {
-      background-color: #7f1212;
-      outline: none;
-      transform: scale(1.05);
-    }
-
-    .btn-gray {
-      background-color: #3a3a3a;
-      color: #d1d5db;
-      font-weight: 600;
-      border-radius: 12px;
-      padding: 0.85rem 1.25rem;
-      text-align: center;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(58, 58, 58, 0.7);
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      user-select: none;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
-    }
-
-    .btn-gray:hover,
-    .btn-gray:focus {
-      background-color: #525252;
-      outline: none;
-      transform: scale(1.03);
     }
 
     .markup-buttons {
       display: flex;
       gap: 1rem;
-      flex-wrap: wrap;
-      margin-top: 1rem;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
+      flex-wrap: nowrap;
+      margin-top: 0.5rem;
     }
 
     .markup-buttons button {
-      flex: 1 1 30%;
+      flex: 1 1 auto;
       min-width: 90px;
     }
 
     #manualMarkupContainer {
       margin-top: 1rem;
       display: none;
-      animation: fadeInUp 0.8s ease forwards;
-      opacity: 0;
-      transform: translateY(15px);
+      flex-wrap: nowrap;
+      align-items: center;
+      gap: 0.75rem;
     }
 
     #manualMarkupContainer.visible {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #manualMarkupContainer label {
+      margin-bottom: 0;
+      flex-shrink: 0;
+      width: 90px;
+      user-select: none;
     }
 
     #manualMarkupContainer input[type="number"] {
-      max-width: 120px;
+      max-width: 100px;
       user-select: none;
       text-align: center;
       background: #2a2a2a;
@@ -215,6 +172,10 @@
       transition: background-color 0.3s ease, transform 0.2s ease;
       user-select: none;
       border: none;
+      min-width: 38px;
+      text-align: center;
+      font-size: 1.5rem;
+      line-height: 1;
     }
 
     #manualMarkupContainer button:hover,
@@ -224,27 +185,83 @@
       transform: scale(1.1);
     }
 
-    #result {
-      margin-top: 2rem;
+    .btn-red {
+      background-color: #b91c1c;
+      color: white;
       font-weight: 700;
-      font-size: 2.5rem;
-      color: #b91c1c;
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
       text-align: center;
-      user-select: text;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(185, 28, 28, 0.7);
+      border: none;
     }
 
-    #result.visible {
+    .btn-red:hover,
+    .btn-red:focus {
+      background-color: #7f1212;
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    .btn-gray {
+      background-color: #3a3a3a;
+      color: #d1d5db;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(58, 58, 58, 0.7);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      border: none;
+    }
+
+    .btn-gray:hover,
+    .btn-gray:focus {
+      background-color: #525252;
+      outline: none;
+      transform: scale(1.03);
+    }
+
+    /* Результат — справа */
+    .result-section {
+  flex: 1 1 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #b91c1c;
+  border-radius: 20px;
+  padding: 1rem 2rem;
+  font-weight: 700;
+  font-size: 2rem; /* Было 3rem */
+  color: #b91c1c;
+  user-select: text;
+  min-height: 80px; /* Было 180px */
+  max-height: 120px;
+  text-align: center;
+  box-shadow: 0 8px 24px rgba(185, 28, 28, 0.5);
+  animation: fadeInUp 0.8s ease forwards;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  word-wrap: break-word; /* Позволяет переносить длинные числа */
+  overflow-wrap: break-word;
+}
+
+
+    .result-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Логотип */
+    /* Логотип сверху формы */
     .logo {
       display: block;
-      margin: 0 auto 2rem;
+      margin: 0 auto 1.5rem;
       width: 100px;
       border-radius: 20%;
       user-select: none;
@@ -255,194 +272,276 @@
       animation-delay: 0.1s;
     }
 
-    /* Мобильные улучшения */
-    @media (max-width: 480px) {
+    /* Кнопки "Справка" и "Сброс" — под формой */
+    .form-actions {
+      margin-top: 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: nowrap;
+    }
+
+    .form-actions button {
+      flex: 1 1 auto;
+      min-width: 140px;
+    }
+
+    /* Мобильные стили */
+    @media (max-width: 720px) {
       .container {
-        padding: 2rem 1.5rem;
+        flex-direction: column;
         max-width: 100%;
+        padding: 2rem 1.5rem;
+        gap: 1.5rem;
+      }
+
+      .result-section {
+        font-size: 1.5rem;
+    min-height: 60px;
+    max-height: 90px;
       }
 
       h1 {
         font-size: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .form-actions {
+        flex-direction: column;
+      }
+
+      .form-actions button {
+        min-width: unset;
+        width: 100%;
+      }
+
+      #manualMarkupContainer {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      #manualMarkupContainer label {
+        width: 100%;
+        margin-bottom: 0.5rem;
+      }
+
+      #manualMarkupContainer input[type="number"] {
+        max-width: 100%;
+      }
+
+      #manualMarkupContainer button {
+        min-width: unset;
+        width: 100%;
+        font-size: 1.25rem;
+      }
+
+      .markup-buttons {
+        flex-wrap: wrap;
       }
 
       .markup-buttons button {
-        min-width: unset;
         flex: 1 1 45%;
       }
+    }
+
+    /* Модальное окно справки */
+    #helpModal {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(10, 10, 10, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 9999;
+      padding: 1rem;
+    }
+
+    #helpModal.visible {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    #helpContent {
+      background-color: #1a1a1a;
+      border: 2px solid #b91c1c;
+      border-radius: 16px;
+      max-width: 460px;
+      width: 100%;
+      padding: 2rem;
+      color: #f5f5f5;
+      box-shadow: 0 8px 24px rgba(185, 28, 28, 0.7);
+      position: relative;
+      font-size: 1rem;
+      line-height: 1.5;
+      user-select: text;
+    }
+
+    #helpContent h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      color: #b91c1c;
+    }
+
+    #helpCloseBtn {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: #b91c1c;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.3s ease;
+    }
+
+    #helpCloseBtn:hover,
+    #helpCloseBtn:focus {
+      color: #ef4444;
+      outline: none;
     }
   </style>
 </head>
 <body>
 
   <div class="container" role="main" aria-label="Переводчик валюты для магазина">
-    <img
-      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbuhU7m8zBKxb2X_t7SP2XAf_w3CDMyQ_xJA&s"
-      alt="Логотип"
-      class="logo"
-      aria-hidden="true"
-      draggable="false"
-    />
-
-    <h1>Переводчик валюты</h1>
-
-    <form id="currencyForm" novalidate autocomplete="off" spellcheck="false">
-      <label for="somAmount">Сумма в сомах</label>
-      <input
-        id="somAmount"
-        type="number"
-        min="0"
-        step="0.01"
-        placeholder="Введите сумму в сомах"
-        aria-describedby="somError"
-        required
-        inputmode="decimal"
+    <div class="form-section">
+      <img
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbuhU7m8zBKxb2X_t7SP2XAf_w3CDMyQ_xJA&s"
+        alt="Логотип"
+        class="logo"
+        aria-hidden="true"
+        draggable="false"
       />
-      <p id="somError" class="error-text hidden">Пожалуйста, введите сумму больше 0</p>
 
-      <label for="rate" class="mt-6 block">Курс (сом за 1 тенге)</label>
-      <input
-        id="rate"
-        type="number"
-        min="0.0001"
-        step="0.0001"
-        placeholder="Курс сом/тенге (например, 0.193)"
-        aria-describedby="rateError"
-        required
-        inputmode="decimal"
-      />
-      <p id="rateError" class="error-text hidden">Введите корректный курс больше 0</p>
+      <h1>Переводчик валюты</h1>
 
-      <div class="markup-buttons" role="group" aria-label="Выберите наценку">
-        <button type="button" data-markup="10" class="btn-red">+10%</button>
-        <button type="button" data-markup="25" class="btn-red">+25%</button>
-        <button type="button" id="otherMarkupBtn" class="btn-gray">Другая наценка</button>
-      </div>
+      <form id="currencyForm" novalidate autocomplete="off" spellcheck="false">
+        <label for="somAmount">Сумма в сомах</label>
+        <p class="field-description">Введите сумму, которую хотите конвертировать из сомов в тенге.</p>
+        <input
+          id="somAmount"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="Введите сумму в сомах"
+          aria-describedby="somError"
+          required
+          inputmode="decimal"
+        />
+        <p id="somError" class="error-text hidden">Пожалуйста, введите сумму больше 0</p>
 
-      <div id="manualMarkupContainer" class="">
-        <label for="markup">Наценка (%)</label>
-        <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem;">
-          <button type="button" id="decreaseMarkup" aria-label="Уменьшить наценку">−</button>
-          <input
-            id="markup"
-            type="number"
-            min="0"
-            step="1"
-            placeholder="0"
-            inputmode="numeric"
-            aria-describedby="markupError"
-            readonly
-            value="0"
-            style="width: 80px;"
-          />
-          <button type="button" id="increaseMarkup" aria-label="Увеличить наценку">+</button>
+        <label for="rate" class="mt-6 block">Курс (сом за 1 тенге)</label>
+        <p class="field-description">Текущий курс обмена сом/тенге (например, 0.165).</p>
+        <input
+          id="rate"
+          type="number"
+          min="0.0001"
+          step="0.0001"
+          placeholder="Курс сом/тенге (например, 0.193)"
+          aria-describedby="rateError"
+          required
+          inputmode="decimal"
+        />
+        <p id="rateError" class="error-text hidden">Введите корректный курс больше 0</p>
+
+        <p class="mt-6 font-semibold user-select-none">Выберите наценку, которая добавится к сумме:</p>
+        <div class="markup-buttons" role="group" aria-label="Выберите наценку">
+          <button type="button" data-markup="10" class="btn-red" aria-pressed="false">+10%</button>
+          <button type="button" data-markup="25" class="btn-red" aria-pressed="false">+25%</button>
+          <button type="button" id="otherMarkupBtn" class="btn-gray" aria-pressed="false">Другая наценка</button>
         </div>
-      </div>
 
-      <div class="flex gap-4 mt-8 flex-wrap">
-        <button type="submit" class="btn-red flex-1 min-w-[140px]" aria-label="Перевести валюту">Перевести</button>
-        <button type="button" id="resetBtn" class="btn-gray flex-1 min-w-[140px]" aria-label="Сбросить форму">Сбросить</button>
-      </div>
-    </form>
+        <div id="manualMarkupContainer" aria-live="polite">
+          <label for="markup">Наценка (%)</label>
+          <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem;">
+            <button type="button" id="decreaseMarkup" aria-label="Уменьшить наценку">−</button>
+            <input
+              id="markup"
+              type="number"
+              min="0"
+              step="1"
+              placeholder="0"
+              inputmode="numeric"
+              aria-describedby="markupError"
+              readonly
+              value="0"
+              style="width: 80px;"
+            />
+            <button type="button" id="increaseMarkup" aria-label="Увеличить наценку">+</button>
+          </div>
+        </div>
 
-    <div id="result" role="region" aria-live="polite" class="mt-10">—</div>
+        <p class="field-description mt-6 text-center">Результат пересчёта будет обновляться автоматически при вводе данных.</p>
+
+        <div class="form-actions">
+          <button type="button" id="helpBtn" class="btn-gray" aria-label="Открыть справку по работе">Справка</button>
+          <button type="button" id="resetBtn" class="btn-red" aria-label="Сбросить форму">Сбросить</button>
+        </div>
+      </form>
+    </div>
+
+    <div id="result" class="result-section" role="region" aria-live="polite" tabindex="0">—</div>
+  </div>
+
+  <!-- Модальное окно справки -->
+  <div id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpTitle" aria-describedby="helpDesc" tabindex="-1">
+    <div id="helpContent">
+      <button id="helpCloseBtn" aria-label="Закрыть справку">&times;</button>
+      <h2 id="helpTitle">Справка по работе с переводчиком</h2>
+      <div id="helpDesc">
+        <p>Этот инструмент помогает быстро пересчитать сумму из сомов в тенге с учётом выбранной наценки.</p>
+        <ul>
+          <li>Введите сумму в сомах — сумму, которую хотите конвертировать.</li>
+          <li>Укажите актуальный курс обмена сом/тенге.</li>
+          <li>Выберите наценку из предложенных вариантов или задайте свою.</li>
+          <li>Результат пересчёта появится автоматически ниже.</li>
+          <li>Кнопка "Сбросить" очистит все поля.</li>
+        </ul>
+        <p>Округление суммы производится по специальным правилам для удобства работы с деньгами.</p>
+      </div>
+    </div>
   </div>
 
   <script>
     const somInput = document.getElementById('somAmount');
     const rateInput = document.getElementById('rate');
     const markupInput = document.getElementById('markup');
-    const resultDiv = document.getElementById('result');
-    const form = document.getElementById('currencyForm');
-    const resetBtn = document.getElementById('resetBtn');
-    const somError = document.getElementById('somError');
-    const rateError = document.getElementById('rateError');
-    const markupButtons = document.querySelectorAll('button[data-markup]');
-    const otherMarkupBtn = document.getElementById('otherMarkupBtn');
     const manualMarkupContainer = document.getElementById('manualMarkupContainer');
+    const markupButtons = document.querySelectorAll('.markup-buttons button:not(#otherMarkupBtn)');
+    const otherMarkupBtn = document.getElementById('otherMarkupBtn');
     const increaseBtn = document.getElementById('increaseMarkup');
     const decreaseBtn = document.getElementById('decreaseMarkup');
+    const resultDiv = document.getElementById('result');
+    const resetBtn = document.getElementById('resetBtn');
+    const helpBtn = document.getElementById('helpBtn');
+    const helpModal = document.getElementById('helpModal');
+    const helpCloseBtn = document.getElementById('helpCloseBtn');
+    const form = document.getElementById('currencyForm');
 
     const DEFAULT_RATE = 0.165;
 
-    function showManualMarkup(show) {
-      if(show) {
-        manualMarkupContainer.classList.add('visible');
-      } else {
-        manualMarkupContainer.classList.remove('visible');
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      const storedSom = localStorage.getItem('somAmount');
-      const storedRate = localStorage.getItem('rate');
-      const storedMarkup = localStorage.getItem('markup');
-
-      somInput.value = storedSom !== null ? storedSom : '';
-      rateInput.value = storedRate !== null ? storedRate : DEFAULT_RATE;
-
-      if (storedMarkup !== null && !['10', '25'].includes(storedMarkup)) {
-        showManualMarkup(true);
-        markupInput.value = storedMarkup;
-      } else if (storedMarkup !== null) {
-        markupInput.value = storedMarkup;
-        showManualMarkup(false);
-      } else {
-        markupInput.value = 0;
-        showManualMarkup(false);
-      }
-
-      if (somInput.value && rateInput.value) {
-        calculateAndShow();
-      }
-    });
-
-    function saveToStorage() {
-      localStorage.setItem('somAmount', somInput.value);
-      localStorage.setItem('rate', rateInput.value);
-      localStorage.setItem('markup', markupInput.value);
-    }
-
-    // Округление с условием:
-    // - Если сумма меньше 1000: округляем вверх до ближайшего чётного числа,
-    //   причем если получилось 100 — заменяем на 200
-    // - Если сумма >= 1000: округляем вверх до ближайших сотен,
-    //   если нечётное — прибавляем 100 (чтобы стало чётным)
-    //   но тысячи не трогаем
     function roundUpRules(amount) {
-  if (amount < 1000) {
-    let rounded = Math.ceil(amount);
-    if (rounded % 2 !== 0) {
-      rounded += 1;
-    }
-    if (rounded === 100) rounded = 200;
-    return rounded;
-  } else {
-    // Округляем вверх до сотен:
-    let hundredsPart = Math.floor(amount / 100);
-    let remainder = amount % 100;
+      if (amount < 1000) {
+        let rounded = Math.ceil(amount);
+        if (rounded % 2 !== 0) rounded += 1;
+        if (rounded === 100) rounded = 200;
+        return rounded;
+      } else {
+        let hundredsPart = Math.floor(amount / 100);
+        let remainder = amount % 100;
 
-    if (remainder > 0) {
-      hundredsPart += 1;
-    }
+        if (remainder > 0) hundredsPart += 1;
 
-    let rounded = hundredsPart * 100;
-
-    // Проверяем четность сотен
-    if ((rounded / 100) % 2 !== 0) {
-      rounded += 100;
-    }
-
-    if (rounded === 100) rounded = 200;
-
-    return rounded;
-  }
-}
-
-
-    function showResult(text) {
-      resultDiv.textContent = text;
-      resultDiv.classList.add('visible');
+        let rounded = hundredsPart * 100;
+        if ((rounded / 100) % 2 !== 0) rounded += 100;
+        if (rounded === 100) rounded = 200;
+        return rounded;
+      }
     }
 
     function validateInputs() {
@@ -451,23 +550,19 @@
       if (!somInput.value || isNaN(somInput.value) || Number(somInput.value) <= 0) {
         somInput.classList.add('input-error');
         somError.classList.remove('hidden');
-        somError.classList.add('visible');
         valid = false;
       } else {
         somInput.classList.remove('input-error');
         somError.classList.add('hidden');
-        somError.classList.remove('visible');
       }
 
       if (!rateInput.value || isNaN(rateInput.value) || Number(rateInput.value) <= 0) {
         rateInput.classList.add('input-error');
         rateError.classList.remove('hidden');
-        rateError.classList.add('visible');
         valid = false;
       } else {
         rateInput.classList.remove('input-error');
         rateError.classList.add('hidden');
-        rateError.classList.remove('visible');
       }
 
       if (manualMarkupContainer.classList.contains('visible')) {
@@ -484,6 +579,46 @@
       return valid;
     }
 
+    function showManualMarkup(show) {
+      if (show) {
+        manualMarkupContainer.classList.add('visible');
+        otherMarkupBtn.setAttribute('aria-pressed', 'true');
+        markupButtons.forEach(btn => btn.setAttribute('aria-pressed', 'false'));
+      } else {
+        manualMarkupContainer.classList.remove('visible');
+        otherMarkupBtn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    function saveToStorage() {
+      localStorage.setItem('somAmount', somInput.value);
+      localStorage.setItem('rate', rateInput.value);
+      localStorage.setItem('markup', markupInput.value);
+    }
+
+    function loadFromStorage() {
+      const storedSom = localStorage.getItem('somAmount');
+      const storedRate = localStorage.getItem('rate');
+      const storedMarkup = localStorage.getItem('markup');
+
+      somInput.value = storedSom !== null ? storedSom : '';
+      rateInput.value = storedRate !== null ? storedRate : DEFAULT_RATE;
+
+      if (storedMarkup !== null && !['10', '25'].includes(storedMarkup)) {
+        showManualMarkup(true);
+        markupInput.value = storedMarkup;
+      } else if (storedMarkup !== null) {
+        markupInput.value = storedMarkup;
+        showManualMarkup(false);
+        markupButtons.forEach(btn => {
+          btn.setAttribute('aria-pressed', btn.getAttribute('data-markup') === storedMarkup ? 'true' : 'false');
+        });
+      } else {
+        markupInput.value = 0;
+        showManualMarkup(false);
+      }
+    }
+
     function calculateAndShow() {
       if (!validateInputs()) {
         resultDiv.classList.remove('visible');
@@ -495,13 +630,13 @@
       const rateVal = parseFloat(rateInput.value);
       const markup = parseFloat(markupInput.value) || 0;
 
-      // Расчёт суммы с наценкой и обратный курс
       const somWithMarkup = som * (1 + markup / 100);
       let tenge = somWithMarkup / rateVal;
 
       tenge = roundUpRules(tenge);
 
-      showResult(`${tenge} ₸`);
+      resultDiv.textContent = `${tenge} ₸`;
+      resultDiv.classList.add('visible');
       saveToStorage();
     }
 
@@ -509,12 +644,15 @@
       btn.addEventListener('click', () => {
         showManualMarkup(false);
         markupInput.value = btn.getAttribute('data-markup');
+        markupButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
         calculateAndShow();
       });
     });
 
     otherMarkupBtn.addEventListener('click', () => {
       showManualMarkup(true);
+      markupInput.readOnly = false;
       markupInput.value = '0';
       calculateAndShow();
     });
@@ -539,8 +677,7 @@
       });
     });
 
-    form.addEventListener('submit', e => {
-      e.preventDefault();
+    markupInput.addEventListener('input', () => {
       calculateAndShow();
     });
 
@@ -548,21 +685,55 @@
       somInput.value = '';
       rateInput.value = DEFAULT_RATE;
       markupInput.value = '0';
+      markupInput.readOnly = true;
       showManualMarkup(false);
-
-      resultDiv.classList.remove('visible');
       resultDiv.textContent = '—';
+      resultDiv.classList.remove('visible');
 
       somInput.classList.remove('input-error');
       rateInput.classList.remove('input-error');
       markupInput.classList.remove('input-error');
 
       somError.classList.add('hidden');
-      somError.classList.remove('visible');
       rateError.classList.add('hidden');
-      rateError.classList.remove('visible');
 
       localStorage.clear();
+
+      markupButtons.forEach(b => b.setAttribute('aria-pressed', 'false'));
+      otherMarkupBtn.setAttribute('aria-pressed', 'false');
+    });
+
+    helpBtn.addEventListener('click', () => {
+      helpModal.classList.add('visible');
+      helpModal.focus();
+    });
+
+    helpCloseBtn.addEventListener('click', () => {
+      helpModal.classList.remove('visible');
+      helpBtn.focus();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && helpModal.classList.contains('visible')) {
+        helpModal.classList.remove('visible');
+        helpBtn.focus();
+      }
+    });
+
+    helpModal.addEventListener('click', e => {
+      if (e.target === helpModal) {
+        helpModal.classList.remove('visible');
+        helpBtn.focus();
+      }
+    });
+
+    const somError = document.getElementById('somError');
+    const rateError = document.getElementById('rateError');
+
+    // При загрузке страницы — подгружаем данные и рассчитываем если есть
+    window.addEventListener('DOMContentLoaded', () => {
+      loadFromStorage();
+      calculateAndShow();
     });
   </script>
 </body>
