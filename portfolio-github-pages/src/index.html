@@ -1,317 +1,555 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amirhan Ordobaev | Portfolio</title>
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-  <!-- AOS CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>ARMYFORMS - Переводчик валюты</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
   <style>
     body {
-      background: linear-gradient(135deg, #e0e7ff 0%, #f0fdfa 100%);
+      background-color: #0a0a0a;
+      font-family: 'Inter', sans-serif;
+      color: #f5f5f5;
       min-height: 100vh;
-      transition: background 0.5s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
     }
-    .dark-mode {
-      background: linear-gradient(135deg, #232946 0%, #121629 100%);
-      color: #e0e7ff;
+
+    .container {
+      background-color: #1a1a1a;
+      border: 2px solid #b91c1c;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 440px;
+      padding: 2.5rem 3rem;
+      box-shadow: 0 8px 24px rgba(185, 28, 28, 0.5);
+      animation: fadeInUp 0.6s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
     }
-    .profile-img {
-      width: 140px;
-      height: 140px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #6366f1;
-      box-shadow: 0 4px 24px rgba(99,102,241,0.15);
-      margin-bottom: 1rem;
-      background: #fff;
-      transition: border-color 0.3s;
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .dark-mode .profile-img {
-      border-color: #eebbc3;
-      background: #232946;
-    }
-    .social-icons a {
-      color: #6366f1;
-      margin: 0 10px;
-      font-size: 1.7rem;
-      transition: color 0.2s, transform 0.2s;
-    }
-    .social-icons a:hover {
-      color: #312e81;
-      transform: scale(1.2);
-    }
-    .dark-mode .social-icons a {
-      color: #eebbc3;
-    }
-    .card {
-      border: none;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px rgba(99,102,241,0.08);
-      transition: box-shadow 0.3s;
-    }
-    .card:hover {
-      box-shadow: 0 8px 32px rgba(99,102,241,0.18);
-    }
-    .nav-link.active {
-      color: #6366f1 !important;
-      font-weight: bold;
-    }
-    .dark-mode .nav-link.active {
-      color: #eebbc3 !important;
-    }
-    .theme-toggle {
-      cursor: pointer;
-      font-size: 1.5rem;
-      color: #6366f1;
-      background: none;
-      border: none;
-      margin-left: 1rem;
-      transition: color 0.2s;
-    }
-    .theme-toggle:hover {
-      color: #312e81;
-    }
-    .dark-mode .theme-toggle {
-      color: #eebbc3;
-    }
-    .counter {
-      font-size: 2.2rem;
-      font-weight: bold;
-      color: #6366f1;
-      margin-bottom: 0.5rem;
-      transition: color 0.3s;
-    }
-    .dark-mode .counter {
-      color: #eebbc3;
-    }
-    .project-card {
-      transition: transform 0.2s, box-shadow 0.2s;
-      cursor: pointer;
-    }
-    .project-card:hover {
-      transform: translateY(-8px) scale(1.03);
-      box-shadow: 0 8px 32px rgba(99,102,241,0.18);
-    }
-    footer {
-      background: #6366f1;
-      color: #fff;
-      padding: 1.2rem 0;
+
+    h1 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 2.75rem;
       text-align: center;
+      margin-bottom: 2rem;
+      color: #b91c1c;
+      user-select: none;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation-delay: 0.2s;
+    }
+
+    label {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      display: block;
+      color: #e5e5e5;
+      letter-spacing: 0.03em;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    input[type="number"] {
+      width: 100%;
+      background: #2a2a2a;
+      border: 2px solid #4b1212;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-size: 1.125rem;
+      color: #f5f5f5;
+      font-weight: 500;
+      transition: border-color 0.3s ease, background-color 0.3s ease;
+      outline-offset: 2px;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    input[type="number"]:focus {
+      border-color: #b91c1c;
+      background-color: #3a1a1a;
+      outline: none;
+    }
+
+    .input-error {
+      border-color: #ef4444 !important;
+      background-color: #4b1a1a !important;
+    }
+
+    .error-text {
+      color: #ef4444;
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+      font-weight: 600;
+      user-select: none;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    .error-text.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .btn-red {
+      background-color: #b91c1c;
+      color: white;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      box-shadow: 0 4px 10px rgba(185, 28, 28, 0.7);
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    .btn-red:hover,
+    .btn-red:focus {
+      background-color: #7f1212;
+      outline: none;
+      transform: scale(1.05);
+    }
+
+    .btn-gray {
+      background-color: #3a3a3a;
+      color: #d1d5db;
+      font-weight: 600;
+      border-radius: 12px;
+      padding: 0.85rem 1.25rem;
+      text-align: center;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(58, 58, 58, 0.7);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    .btn-gray:hover,
+    .btn-gray:focus {
+      background-color: #525252;
+      outline: none;
+      transform: scale(1.03);
+    }
+
+    .markup-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    .markup-buttons button {
+      flex: 1 1 30%;
+      min-width: 90px;
+    }
+
+    #manualMarkupContainer {
+      margin-top: 1rem;
+      display: none;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(15px);
+    }
+
+    #manualMarkupContainer.visible {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    #manualMarkupContainer input[type="number"] {
+      max-width: 120px;
+      user-select: none;
+      text-align: center;
+      background: #2a2a2a;
+      border: 2px solid #4b1212;
+      border-radius: 12px;
+      padding: 0.8rem 1rem;
+      font-size: 1.125rem;
+      color: #f5f5f5;
+      font-weight: 500;
+    }
+
+    #manualMarkupContainer button {
+      background-color: #b91c1c;
+      color: white;
+      font-weight: 700;
+      border-radius: 12px;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(185, 28, 28, 0.7);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      user-select: none;
+      border: none;
+    }
+
+    #manualMarkupContainer button:hover,
+    #manualMarkupContainer button:focus {
+      background-color: #7f1212;
+      outline: none;
+      transform: scale(1.1);
+    }
+
+    #result {
       margin-top: 2rem;
-      border-radius: 0 0 18px 18px;
-      letter-spacing: 1px;
-      transition: background 0.3s;
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #b91c1c;
+      text-align: center;
+      user-select: text;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
-    .dark-mode footer {
-      background: #232946;
-      color: #eebbc3;
+
+    #result.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-    /* Smooth scroll */
-    html {
-      scroll-behavior: smooth;
+
+    /* Логотип */
+    .logo {
+      display: block;
+      margin: 0 auto 2rem;
+      width: 100px;
+      border-radius: 20%;
+      user-select: none;
+      pointer-events: none;
+      animation: fadeInUp 0.8s ease forwards;
+      opacity: 0;
+      transform: translateY(20px);
+      animation-delay: 0.1s;
     }
-    /* Tooltip custom */
-    .tooltip-inner {
-      background-color: #6366f1 !important;
-      color: #fff !important;
-      font-size: 1rem;
-    }
-    .dark-mode .tooltip-inner {
-      background-color: #eebbc3 !important;
-      color: #232946 !important;
+
+    /* Мобильные улучшения */
+    @media (max-width: 480px) {
+      .container {
+        padding: 2rem 1.5rem;
+        max-width: 100%;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .markup-buttons button {
+        min-width: unset;
+        flex: 1 1 45%;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3" data-aos="fade-down">
-    <div class="container">
-      <a class="navbar-brand fw-bold text-primary" href="#">Amirhan Ordobaev</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link active" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-        </ul>
-        <button class="theme-toggle" id="themeToggle" title="Toggle dark mode"><i class="bi bi-moon-stars"></i></button>
+
+  <div class="container" role="main" aria-label="Переводчик валюты для магазина">
+    <img
+      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbuhU7m8zBKxb2X_t7SP2XAf_w3CDMyQ_xJA&s"
+      alt="Логотип"
+      class="logo"
+      aria-hidden="true"
+      draggable="false"
+    />
+
+    <h1>Переводчик валюты</h1>
+
+    <form id="currencyForm" novalidate autocomplete="off" spellcheck="false">
+      <label for="somAmount">Сумма в сомах</label>
+      <input
+        id="somAmount"
+        type="number"
+        min="0"
+        step="0.01"
+        placeholder="Введите сумму в сомах"
+        aria-describedby="somError"
+        required
+        inputmode="decimal"
+      />
+      <p id="somError" class="error-text hidden">Пожалуйста, введите сумму больше 0</p>
+
+      <label for="rate" class="mt-6 block">Курс (сом за 1 тенге)</label>
+      <input
+        id="rate"
+        type="number"
+        min="0.0001"
+        step="0.0001"
+        placeholder="Курс сом/тенге (например, 0.193)"
+        aria-describedby="rateError"
+        required
+        inputmode="decimal"
+      />
+      <p id="rateError" class="error-text hidden">Введите корректный курс больше 0</p>
+
+      <div class="markup-buttons" role="group" aria-label="Выберите наценку">
+        <button type="button" data-markup="10" class="btn-red">+10%</button>
+        <button type="button" data-markup="25" class="btn-red">+25%</button>
+        <button type="button" id="otherMarkupBtn" class="btn-gray">Другая наценка</button>
       </div>
-    </div>
-  </nav>
 
-  <main class="container my-5">
-    <div class="text-center" data-aos="zoom-in">
-      <img src="https://i.imgur.com/0y8Ftya.png" alt="Profile" class="profile-img">
-      <h1 class="fw-bold mt-3 mb-1">Amirhan Ordobaev</h1>
-      <p class="lead text-secondary mb-3">Student at KSTU &bull; Competitive Programmer</p>
-      <div class="social-icons mb-4">
-        <a href="https://codeforces.com/profile/amirhanordobaev" target="_blank" title="Codeforces" data-bs-toggle="tooltip"><i class="bi bi-code-slash"></i></a>
-        <a href="https://leetcode.com/amirhanordobaev" target="_blank" title="LeetCode" data-bs-toggle="tooltip"><i class="bi bi-lightning"></i></a>
-        <a href="mailto:youremail@example.com" title="Email" data-bs-toggle="tooltip"><i class="bi bi-envelope"></i></a>
-        <a href="https://t.me/amirhanordobaev" target="_blank" title="Telegram" data-bs-toggle="tooltip"><i class="bi bi-telegram"></i></a>
-      </div>
-      <div class="row justify-content-center mb-4">
-        <div class="col-6 col-md-3">
-          <div class="counter" id="contestCounter" data-aos="flip-left">0</div>
-          <div class="text-secondary">Contests</div>
-        </div>
-        <div class="col-6 col-md-3">
-          <div class="counter" id="projectCounter" data-aos="flip-right">0</div>
-          <div class="text-secondary">Projects</div>
+      <div id="manualMarkupContainer" class="">
+        <label for="markup">Наценка (%)</label>
+        <div style="display: flex; align-items: center; gap: 0.75rem; margin-top: 0.25rem;">
+          <button type="button" id="decreaseMarkup" aria-label="Уменьшить наценку">−</button>
+          <input
+            id="markup"
+            type="number"
+            min="0"
+            step="1"
+            placeholder="0"
+            inputmode="numeric"
+            aria-describedby="markupError"
+            readonly
+            value="0"
+            style="width: 80px;"
+          />
+          <button type="button" id="increaseMarkup" aria-label="Увеличить наценку">+</button>
         </div>
       </div>
-    </div>
 
-    <section id="about" class="card p-4 mb-4" data-aos="fade-up">
-      <h2 class="fw-bold text-primary mb-3">About Me</h2>
-      <p>
-        Hi! I'm Amirhan Ordobaev, a student at KSTU passionate about algorithms and problem solving. As a competitive programmer, I regularly participate in coding contests to sharpen my skills.
-      </p>
-      <ul>
-        <li><strong>Skills:</strong> C++, Python, Algorithms, Data Structures</li>
-        <li><strong>Platforms:</strong> Codeforces, LeetCode, AtCoder</li>
-      </ul>
-    </section>
-
-    <section id="projects" class="mb-4" data-aos="fade-up" data-aos-delay="100">
-      <h2 class="fw-bold text-primary mb-3">Projects & Achievements</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="Codeforces Profile" data-desc="My competitive programming profile on Codeforces.">
-            <div class="card-body">
-              <h5 class="card-title"><i class="bi bi-code-slash"></i> Codeforces</h5>
-              <p class="card-text">See my rating, contests and problems solved.</p>
-              <a href="https://codeforces.com/profile/amirhanordobaev" target="_blank" class="btn btn-outline-primary btn-sm">View Profile</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card project-card" data-bs-toggle="modal" data-bs-target="#projectModal" data-title="LeetCode Profile" data-desc="My LeetCode profile and solved problems.">
-            <div class="card-body">
-              <h5 class="card-title"><i class="bi bi-lightning"></i> LeetCode</h5>
-              <p class="card-text">Practice and solve algorithmic challenges.</p>
-              <a href="https://leetcode.com/amirhanordobaev" target="_blank" class="btn btn-outline-warning btn-sm">View Profile</a>
-            </div>
-          </div>
-        </div>
-        <!-- Add more project cards here -->
+      <div class="flex gap-4 mt-8 flex-wrap">
+        <button type="submit" class="btn-red flex-1 min-w-[140px]" aria-label="Перевести валюту">Перевести</button>
+        <button type="button" id="resetBtn" class="btn-gray flex-1 min-w-[140px]" aria-label="Сбросить форму">Сбросить</button>
       </div>
-    </section>
+    </form>
 
-    <section id="contact" class="card p-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-      <h2 class="fw-bold text-primary mb-3">Contact</h2>
-      <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
-      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal"><i class="bi bi-chat-dots"></i> Write me</button>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Amirhan Ordobaev. All rights reserved.
-  </footer>
-
-  <!-- Project Modal -->
-  <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="projectModalLabel"></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" id="projectModalDesc"></div>
-      </div>
-    </div>
+    <div id="result" role="region" aria-live="polite" class="mt-10">—</div>
   </div>
 
-  <!-- Contact Modal -->
-  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <form class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="contactModalLabel">Contact Me</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <div class="mb-3">
-            <label for="contactName" class="form-label">Your Name</label>
-            <input type="text" class="form-control" id="contactName" required>
-          </div>
-          <div class="mb-3">
-            <label for="contactEmail" class="form-label">Your Email</label>
-            <input type="email" class="form-control" id="contactEmail" required>
-          </div>
-          <div class="mb-3">
-            <label for="contactMsg" class="form-label">Message</label>
-            <textarea class="form-control" id="contactMsg" rows="3" required></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-success">Send</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <!-- AOS JS -->
-  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 900, once: true });
+    const somInput = document.getElementById('somAmount');
+    const rateInput = document.getElementById('rate');
+    const markupInput = document.getElementById('markup');
+    const resultDiv = document.getElementById('result');
+    const form = document.getElementById('currencyForm');
+    const resetBtn = document.getElementById('resetBtn');
+    const somError = document.getElementById('somError');
+    const rateError = document.getElementById('rateError');
+    const markupButtons = document.querySelectorAll('button[data-markup]');
+    const otherMarkupBtn = document.getElementById('otherMarkupBtn');
+    const manualMarkupContainer = document.getElementById('manualMarkupContainer');
+    const increaseBtn = document.getElementById('increaseMarkup');
+    const decreaseBtn = document.getElementById('decreaseMarkup');
 
-    // Theme toggle
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      themeToggle.innerHTML = document.body.classList.contains('dark-mode')
-        ? '<i class="bi bi-brightness-high"></i>'
-        : '<i class="bi bi-moon-stars"></i>';
-    });
+    const DEFAULT_RATE = 0.193;
 
-    // Tooltip init
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-
-    // Animated counters
-    function animateCounter(id, target, duration) {
-      const el = document.getElementById(id);
-      let start = 0;
-      const step = Math.ceil(target / (duration / 20));
-      const interval = setInterval(() => {
-        start += step;
-        if (start >= target) {
-          el.textContent = target;
-          clearInterval(interval);
-        } else {
-          el.textContent = start;
-        }
-      }, 20);
+    function showManualMarkup(show) {
+      if(show) {
+        manualMarkupContainer.classList.add('visible');
+      } else {
+        manualMarkupContainer.classList.remove('visible');
+      }
     }
-    document.addEventListener('DOMContentLoaded', () => {
-      animateCounter('contestCounter', 42, 800); // Example: 42 contests
-      animateCounter('projectCounter', 7, 800);  // Example: 7 projects
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const storedSom = localStorage.getItem('somAmount');
+      const storedRate = localStorage.getItem('rate');
+      const storedMarkup = localStorage.getItem('markup');
+
+      somInput.value = storedSom !== null ? storedSom : '';
+      rateInput.value = storedRate !== null ? storedRate : DEFAULT_RATE;
+
+      if (storedMarkup !== null && !['10', '25'].includes(storedMarkup)) {
+        showManualMarkup(true);
+        markupInput.value = storedMarkup;
+      } else if (storedMarkup !== null) {
+        markupInput.value = storedMarkup;
+        showManualMarkup(false);
+      } else {
+        markupInput.value = 0;
+        showManualMarkup(false);
+      }
+
+      if (somInput.value && rateInput.value) {
+        calculateAndShow();
+      }
     });
 
-    // Project modal dynamic content
-    const projectModal = document.getElementById('projectModal');
-    projectModal.addEventListener('show.bs.modal', function (event) {
-      const card = event.relatedTarget;
-      document.getElementById('projectModalLabel').textContent = card.getAttribute('data-title');
-      document.getElementById('projectModalDesc').textContent = card.getAttribute('data-desc');
+    function saveToStorage() {
+      localStorage.setItem('somAmount', somInput.value);
+      localStorage.setItem('rate', rateInput.value);
+      localStorage.setItem('markup', markupInput.value);
+    }
+
+    // Округление с условием:
+    // - Если сумма меньше 1000: округляем до ближайшего четного числа, 
+    //   причем если получилось 100 — заменяем на 200
+    // - Если сумма >= 1000: округляем до ближайших сотен (с сохранением четности),
+    //   но тысячи не трогаем
+    function roundUpRules(amount) {
+      if (amount < 1000) {
+        let rounded = Math.ceil(amount);
+        // Сделать четным:
+        if (rounded % 2 !== 0) rounded += 1;
+        // Спецслучай для 100:
+        if (rounded === 100) rounded = 200;
+        return rounded;
+      } else {
+        // Округление к ближайшим сотням:
+        let rounded = Math.ceil(amount / 100) * 100;
+        // Если это 100, заменить на 200
+        if (rounded === 100) rounded = 200;
+        // Если сумма 1000 и выше — проверить четность сотен (например 1100, 1200...)
+        // Мы оставляем как есть, т.к. это тысячи и их не трогаем
+        return rounded;
+      }
+    }
+
+    function showResult(text) {
+      resultDiv.textContent = text;
+      resultDiv.classList.add('visible');
+    }
+
+    function validateInputs() {
+      let valid = true;
+
+      if (!somInput.value || isNaN(somInput.value) || Number(somInput.value) <= 0) {
+        somInput.classList.add('input-error');
+        somError.classList.remove('hidden');
+        somError.classList.add('visible');
+        valid = false;
+      } else {
+        somInput.classList.remove('input-error');
+        somError.classList.add('hidden');
+        somError.classList.remove('visible');
+      }
+
+      if (!rateInput.value || isNaN(rateInput.value) || Number(rateInput.value) <= 0) {
+        rateInput.classList.add('input-error');
+        rateError.classList.remove('hidden');
+        rateError.classList.add('visible');
+        valid = false;
+      } else {
+        rateInput.classList.remove('input-error');
+        rateError.classList.add('hidden');
+        rateError.classList.remove('visible');
+      }
+
+      if (manualMarkupContainer.classList.contains('visible')) {
+        if (markupInput.value === '' || isNaN(markupInput.value) || Number(markupInput.value) < 0) {
+          markupInput.classList.add('input-error');
+          valid = false;
+        } else {
+          markupInput.classList.remove('input-error');
+        }
+      } else {
+        markupInput.classList.remove('input-error');
+      }
+
+      return valid;
+    }
+
+    function calculateAndShow() {
+      if (!validateInputs()) {
+        resultDiv.classList.remove('visible');
+        resultDiv.textContent = '—';
+        return;
+      }
+
+      const som = parseFloat(somInput.value);
+      const rateVal = parseFloat(rateInput.value);
+      const markup = parseFloat(markupInput.value) || 0;
+
+      // Расчёт суммы с наценкой и обратный курс
+      const somWithMarkup = som * (1 + markup / 100);
+      let tenge = somWithMarkup / rateVal;
+
+      tenge = roundUpRules(tenge);
+
+      showResult(`${tenge} ₸`);
+      saveToStorage();
+    }
+
+    markupButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        showManualMarkup(false);
+        markupInput.value = btn.getAttribute('data-markup');
+        calculateAndShow();
+      });
     });
 
-    // Contact modal fake submit
-    document.querySelector('#contactModal form').addEventListener('submit', function(e) {
+    otherMarkupBtn.addEventListener('click', () => {
+      showManualMarkup(true);
+      markupInput.value = '0';
+      calculateAndShow();
+    });
+
+    increaseBtn.addEventListener('click', () => {
+      let val = Number(markupInput.value) || 0;
+      markupInput.value = val + 1;
+      calculateAndShow();
+    });
+
+    decreaseBtn.addEventListener('click', () => {
+      let val = Number(markupInput.value) || 0;
+      if (val > 0) {
+        markupInput.value = val - 1;
+        calculateAndShow();
+      }
+    });
+
+    [somInput, rateInput].forEach(input => {
+      input.addEventListener('input', () => {
+        calculateAndShow();
+      });
+    });
+
+    form.addEventListener('submit', e => {
       e.preventDefault();
-      alert('Thank you for your message!');
-      bootstrap.Modal.getInstance(document.getElementById('contactModal')).hide();
+      calculateAndShow();
+    });
+
+    resetBtn.addEventListener('click', () => {
+      somInput.value = '';
+      rateInput.value = DEFAULT_RATE;
+      markupInput.value = '0';
+      showManualMarkup(false);
+
+      resultDiv.classList.remove('visible');
+      resultDiv.textContent = '—';
+
+      somInput.classList.remove('input-error');
+      rateInput.classList.remove('input-error');
+      markupInput.classList.remove('input-error');
+
+      somError.classList.add('hidden');
+      somError.classList.remove('visible');
+      rateError.classList.add('hidden');
+      rateError.classList.remove('visible');
+
+      localStorage.clear();
     });
   </script>
 </body>
