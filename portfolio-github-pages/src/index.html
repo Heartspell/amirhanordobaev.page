@@ -408,23 +408,25 @@
     //   причем если получилось 100 — заменяем на 200
     // - Если сумма >= 1000: округляем до ближайших сотен (с сохранением четности),
     //   но тысячи не трогаем
-    function roundUpRules(amount) {
-      if (amount < 1000) {
-        let rounded = Math.ceil(amount);
-        // Сделать четным:
-        if (rounded % 2 !== 0) rounded += 1;
-        // Спецслучай для 100:
-        if (rounded === 100) rounded = 200;
-        return rounded;
+  function roundUpRules(amount) {
+  if (amount < 1000) {
+    let rounded = Math.round(amount);
+    if (rounded % 2 !== 0) {
+      if (amount > rounded) {
+        rounded += 1;
       } else {
-        // Округление к ближайшим сотням:
-        let rounded = Math.ceil(amount / 100) * 100;
-        // Если это 100, заменить на 200
-        if (rounded === 100) rounded = 200;
-        // Если сумма 1000 и выше — проверить четность сотен (например 1100, 1200...)
-        // Мы оставляем как есть, т.к. это тысячи и их не трогаем
-        return rounded;
+        rounded -= 1;
       }
+    }
+    if (rounded === 100) rounded = 200;
+    return rounded;
+  } else {
+    let rounded = Math.round(amount / 100) * 100;
+    if (rounded === 100) rounded = 200;
+    return rounded;
+  }
+}
+
     }
 
     function showResult(text) {
